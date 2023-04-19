@@ -19,9 +19,16 @@
 		0D18765529F06481009A2A1B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0D18765429F06481009A2A1B /* SnapKit */; };
 		0D18765829F0782F009A2A1B /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18765729F0782F009A2A1B /* Board.swift */; };
 		0D18765A29F078D9009A2A1B /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18765929F078D9009A2A1B /* Cell.swift */; };
-		0D18765C29F07BAB009A2A1B /* FigureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18765B29F07BAB009A2A1B /* FigureType.swift */; };
 		0D18765F29F080AC009A2A1B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 0D18765E29F080AC009A2A1B /* RxDataSources */; };
 		0D18766129F0849D009A2A1B /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766029F0849D009A2A1B /* CellView.swift */; };
+		0D18766329F08CB2009A2A1B /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766229F08CB2009A2A1B /* Figure.swift */; };
+		0D18766629F09633009A2A1B /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766529F09633009A2A1B /* Pawn.swift */; };
+		0D18766829F09925009A2A1B /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766729F09925009A2A1B /* Position.swift */; };
+		0D18766A29F099DF009A2A1B /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766929F099DF009A2A1B /* Rook.swift */; };
+		0D18766C29F09A08009A2A1B /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766B29F09A08009A2A1B /* Knight.swift */; };
+		0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766D29F09A4A009A2A1B /* Bishop .swift */; };
+		0D18767029F09A65009A2A1B /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766F29F09A65009A2A1B /* Queen.swift */; };
+		0D18767229F09A73009A2A1B /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18767129F09A73009A2A1B /* King.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +43,15 @@
 		0D18765029F061D5009A2A1B /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		0D18765729F0782F009A2A1B /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		0D18765929F078D9009A2A1B /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		0D18765B29F07BAB009A2A1B /* FigureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigureType.swift; sourceTree = "<group>"; };
 		0D18766029F0849D009A2A1B /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		0D18766229F08CB2009A2A1B /* Figure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		0D18766529F09633009A2A1B /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		0D18766729F09925009A2A1B /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		0D18766929F099DF009A2A1B /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		0D18766B29F09A08009A2A1B /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		0D18766D29F09A4A009A2A1B /* Bishop .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bishop .swift"; sourceTree = "<group>"; };
+		0D18766F29F09A65009A2A1B /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		0D18767129F09A73009A2A1B /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +113,26 @@
 		0D18765629F077F0009A2A1B /* ChessModels */ = {
 			isa = PBXGroup;
 			children = (
+				0D18766429F09606009A2A1B /* Figures */,
 				0D18765729F0782F009A2A1B /* Board.swift */,
 				0D18765929F078D9009A2A1B /* Cell.swift */,
-				0D18765B29F07BAB009A2A1B /* FigureType.swift */,
+				0D18766729F09925009A2A1B /* Position.swift */,
 			);
 			path = ChessModels;
+			sourceTree = "<group>";
+		};
+		0D18766429F09606009A2A1B /* Figures */ = {
+			isa = PBXGroup;
+			children = (
+				0D18766229F08CB2009A2A1B /* Figure.swift */,
+				0D18766529F09633009A2A1B /* Pawn.swift */,
+				0D18766929F099DF009A2A1B /* Rook.swift */,
+				0D18766B29F09A08009A2A1B /* Knight.swift */,
+				0D18766D29F09A4A009A2A1B /* Bishop .swift */,
+				0D18766F29F09A65009A2A1B /* Queen.swift */,
+				0D18767129F09A73009A2A1B /* King.swift */,
+			);
+			path = Figures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,12 +240,19 @@
 			files = (
 				0D18763B29F05E28009A2A1B /* ViewController.swift in Sources */,
 				0D18765129F061D5009A2A1B /* BoardView.swift in Sources */,
+				0D18767029F09A65009A2A1B /* Queen.swift in Sources */,
 				0D18765829F0782F009A2A1B /* Board.swift in Sources */,
 				0D18763729F05E28009A2A1B /* AppDelegate.swift in Sources */,
+				0D18766C29F09A08009A2A1B /* Knight.swift in Sources */,
 				0D18766129F0849D009A2A1B /* CellView.swift in Sources */,
+				0D18766329F08CB2009A2A1B /* Figure.swift in Sources */,
 				0D18763929F05E28009A2A1B /* SceneDelegate.swift in Sources */,
-				0D18765C29F07BAB009A2A1B /* FigureType.swift in Sources */,
+				0D18766629F09633009A2A1B /* Pawn.swift in Sources */,
+				0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */,
+				0D18766A29F099DF009A2A1B /* Rook.swift in Sources */,
+				0D18766829F09925009A2A1B /* Position.swift in Sources */,
 				0D18765A29F078D9009A2A1B /* Cell.swift in Sources */,
+				0D18767229F09A73009A2A1B /* King.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

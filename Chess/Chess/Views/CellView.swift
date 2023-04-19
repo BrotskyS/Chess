@@ -12,7 +12,7 @@ class CellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        reuseIdentifier = "cell"
+        //        reuseIdentifier = "cell"
     }
     
     required init?(coder: NSCoder) {
@@ -20,15 +20,21 @@ class CellView: UICollectionViewCell {
     }
     
     func configure(_ cell: Cell) {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 8)
-        label.backgroundColor = cell.color
-        label.text = "\(cell.x)"
+        contentView.backgroundColor = cell.color == .black ? .darkGray : .gray
         
-        contentView.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        if cell.isSelected {
+            contentView.backgroundColor = .red
         }
+        
+        // figure exist on cell
+        if cell.figure != nil {
+            let image = UIImageView(image: cell.figure?.image)
+            
+            contentView.addSubview(image)
+            image.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        
     }
 }

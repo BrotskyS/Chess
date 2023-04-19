@@ -6,14 +6,17 @@
 //
 
 import Foundation
-import UIKit
 
-struct Cell: Identifiable {
+enum CellColor {
+    case black
+    case white
+}
+
+struct Cell {
     let id = UUID().uuidString
-    let x: Int
-    let y: Int
-    let color: UIColor
-    var figure: FigureType
+    var position: Position
+    let color: CellColor
+    var figure: Figure?
     var available: Bool
-    
+    var isSelected: Bool
 }
