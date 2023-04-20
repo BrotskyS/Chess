@@ -9,17 +9,24 @@ import Foundation
 import UIKit
 
 struct Pawn: Figure {
+    let type: FigureType
+    let image: UIImage?
+    let color: ColorType
+    var cell: Cell?
+    var position: Position?
 
-    var image: UIImage?
-    var color: FigureColor
-
-    func canMove() -> Bool {
+    func canMove(toCell: Cell) -> Bool {
+//        guard canMoveBasicRule(toCell: toCell) else {
+//            return false
+//        }
+        
         return true
     }
 
-    init(color: FigureColor) {
+    init(color: ColorType) {
         self.color = color
         
         self.image = color == .white ? UIImage(named: "white-pawn") : UIImage(named: "black-pawn")
+        self.type = .pawn
     }
 }

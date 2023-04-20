@@ -9,19 +9,27 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-    private var chessboardView =  ChessboardView()
+    private var chessboardView: BoardView = {
+        let boardView = BoardView()
+        let board = Board()
+        
+        board.boardView = boardView
+        boardView.board = board
+        
+        return boardView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //        view.addSubview(boardView)
-    
+        
         view.addSubview(chessboardView)
         chessboardView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.height.equalTo(view.snp.width)
         }
     }
-
+    
     //        view.present(boardView, animated: true)
     // Do any additional setup after loading the view.
     

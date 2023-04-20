@@ -9,16 +9,20 @@ import Foundation
 import UIKit
 
 struct Bishop: Figure {
-    var color: FigureColor
-    var image = UIImage(named: "black-pawn")
+    let type: FigureType
+    let color: ColorType
+    let image: UIImage?
+    var cell: Cell?
+    var position: Position?
     
-    func canMove() -> Bool {
+    func canMove(toCell: Cell) -> Bool {
         return true
     }
     
-    init(color: FigureColor) {
+    init(color: ColorType) {
         self.color = color
         
         self.image = color == .white ? UIImage(named: "white-bishop") : UIImage(named: "black-bishop")
+        self.type = .bishop
     }
 }

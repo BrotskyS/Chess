@@ -12,18 +12,22 @@ class CellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //        reuseIdentifier = "cell"
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ cell: Cell) {
-        contentView.backgroundColor = cell.color == .black ? .darkGray : .gray
+    func configure(cell: Cell) {
         
-        if cell.isSelected {
-            contentView.backgroundColor = .red
+        for subview in contentView.subviews {
+               subview.removeFromSuperview()
+           }
+
+        contentView.backgroundColor = cell.color == .white ? UIColor(hexString: "##EEEED2") : UIColor(hexString: "#769656")
+        
+        if cell.selected {
+            contentView.backgroundColor = .brown
         }
         
         // figure exist on cell
@@ -36,5 +40,18 @@ class CellView: UICollectionViewCell {
             }
         }
         
+        // Show dot if cell available and one cell selected
+        if cell.available && cell.figure == nil {
+            let dotView = UIView()
+            dotView.backgroundColor = .red
+            contentView.addSubview(dotView)
+            
+            dotView.snp.makeConstraints { make in
+                make.width.equalTo(10)
+                make.height.equalTo(10)
+                make.center.equalToSuperview()
+                
+            }
+        }
     }
 }

@@ -29,6 +29,8 @@
 		0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766D29F09A4A009A2A1B /* Bishop .swift */; };
 		0D18767029F09A65009A2A1B /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766F29F09A65009A2A1B /* Queen.swift */; };
 		0D18767229F09A73009A2A1B /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18767129F09A73009A2A1B /* King.swift */; };
+		0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */; };
+		0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		0D18766D29F09A4A009A2A1B /* Bishop .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bishop .swift"; sourceTree = "<group>"; };
 		0D18766F29F09A65009A2A1B /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		0D18767129F09A73009A2A1B /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
+		0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
+		0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		0D18763529F05E28009A2A1B /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				0D4AAAEC29F1B60C00C6F427 /* Extentions */,
 				0D18765629F077F0009A2A1B /* ChessModels */,
 				0D18764F29F0604A009A2A1B /* Views */,
 				0D18763629F05E28009A2A1B /* AppDelegate.swift */,
@@ -133,6 +138,15 @@
 				0D18767129F09A73009A2A1B /* King.swift */,
 			);
 			path = Figures;
+			sourceTree = "<group>";
+		};
+		0D4AAAEC29F1B60C00C6F427 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */,
+				0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +259,11 @@
 				0D18763729F05E28009A2A1B /* AppDelegate.swift in Sources */,
 				0D18766C29F09A08009A2A1B /* Knight.swift in Sources */,
 				0D18766129F0849D009A2A1B /* CellView.swift in Sources */,
+				0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */,
 				0D18766329F08CB2009A2A1B /* Figure.swift in Sources */,
 				0D18763929F05E28009A2A1B /* SceneDelegate.swift in Sources */,
 				0D18766629F09633009A2A1B /* Pawn.swift in Sources */,
+				0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */,
 				0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */,
 				0D18766A29F099DF009A2A1B /* Rook.swift in Sources */,
 				0D18766829F09925009A2A1B /* Position.swift in Sources */,

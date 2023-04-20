@@ -9,16 +9,25 @@ import Foundation
 import UIKit
 
 struct Queen: Figure {
-    var color: FigureColor
-    var image = UIImage(named: "black-pawn")
+    let type: FigureType
+    let color: ColorType
+    let image: UIImage?
+    var cell: Cell?
+    var position: Position?
     
-    func canMove() -> Bool {
-        return true
+    func canMove(toCell: Cell) -> Bool {
+        guard canMoveBasicRule(toCell: toCell) else {
+            return false
+        }
+        
+        return false
     }
     
-    init(color: FigureColor) {
+    init(color: ColorType, position: Position) {
         self.color = color
         
         self.image = color == .white ? UIImage(named: "white-queen") : UIImage(named: "black-queen")
+        self.type = .queen
+        self.position = position
     }
 }

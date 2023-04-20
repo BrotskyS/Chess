@@ -8,11 +8,6 @@
 import Foundation
 import UIKit
 
-enum FigureColor {
-    case black
-    case white
-}
-
 enum FigureType {
     case pawn
     case rook
@@ -23,10 +18,24 @@ enum FigureType {
 }
 
 protocol Figure {
+    var type: FigureType { get }
     var image: UIImage? { get }
-    var color: FigureColor { get }
+    var color: ColorType { get }
+    var cell: Cell? { get set }
+    var position: Position? { get set }
     
-    func canMove() -> Bool
-    
-//    init (image: UIImage?)
+    func canMove(toCell: Cell) -> Bool
+
+}
+
+extension Figure {
+    func canMoveBasicRule(toCell: Cell) -> Bool {
+        if toCell.color == color {
+            return false
+        } else if toCell.figure?.type == .king {
+            return false
+        } else {
+            return true
+        }
+    }
 }
