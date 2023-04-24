@@ -85,7 +85,7 @@ extension BoardView: UICollectionViewDelegate {
         let row = indexPath.item / boardSize
         let column = indexPath.item % boardSize
         
-        board.pressOn(position: Position(x: row, y: column))
+        board.pressOn(position: Position(x: column, y: row))
     }
 }
 

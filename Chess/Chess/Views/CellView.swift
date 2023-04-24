@@ -18,6 +18,7 @@ class CellView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func configure(cell: Cell) {
         
         for subview in contentView.subviews {
@@ -41,7 +42,7 @@ class CellView: UICollectionViewCell {
         }
         
         // Show dot if cell available and one cell selected
-        if cell.available && cell.figure == nil {
+        if cell.available {
             let dotView = UIView()
             dotView.backgroundColor = .red
             contentView.addSubview(dotView)
@@ -52,6 +53,19 @@ class CellView: UICollectionViewCell {
                 make.center.equalToSuperview()
                 
             }
+        }
+        
+        let labelPosition = UILabel()
+        
+        labelPosition.text = "\(cell.position.x), \(cell.position.y)"
+        labelPosition.textColor = .blue
+        labelPosition.font = .systemFont(ofSize: 10)
+        contentView.addSubview(labelPosition)
+        
+        labelPosition.snp.makeConstraints { make in
+            make.leading.equalTo(0)
+            make.bottom.equalTo(0)
+            
         }
     }
 }

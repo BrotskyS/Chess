@@ -12,17 +12,18 @@ struct King: Figure {
     let type: FigureType
     let color: ColorType
     let image: UIImage?
-    var cell: Cell?
-    var position: Position?
+//    var cell: Cell?
+    var position: Position
     
-    func canMove(toCell: Cell) -> Bool {
+    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
         return true
     }
     
-    init(color: ColorType) {
+    init(color: ColorType, position: Position) {
         self.color = color
         
         self.image = color == .white ? UIImage(named: "white-king") : UIImage(named: "black-king")
         self.type = .king
+        self.position = position
     }
 }
