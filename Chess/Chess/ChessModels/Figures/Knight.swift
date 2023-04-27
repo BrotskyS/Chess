@@ -36,7 +36,7 @@ struct Knight: Figure {
         self.position = position
     }
     
-     func moveFigure(toCell: Cell, board: Board) {
+    func moveFigure(toCell: Cell, board: Board) {
         
     }
 }

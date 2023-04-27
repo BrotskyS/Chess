@@ -44,6 +44,7 @@ struct King: Figure {
     }
     
     private func canCastle(toCell: Cell, cells: Cells) -> (from: Cell, to: Cell)? {
+        print("isFirstStep: \(isFirstStep)")
         guard isFirstStep == true else {
             return nil
         }
@@ -71,8 +72,7 @@ struct King: Figure {
         return nil
     }
    
-     func moveFigure(toCell: Cell, board: Board) {
-         
+    func moveFigure(toCell: Cell, board: Board) {
          if let canCastle = canCastle(toCell: toCell, cells: board.cells) {
              board.moveFigure(from: canCastle.from, to: canCastle.to)
          }

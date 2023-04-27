@@ -29,7 +29,6 @@ struct Pawn: Figure {
         let isSameYFirstStep = isFirstStep && toCell.position.y == cell.position.y + firstStepDirection
         let isSameX = toCell.position.x == cell.position.x
         
-        
         if (isSameY || isSameYFirstStep) && isSameX && cells.isEmptyVertical(fromCell: cell, toCell: toCell) && toCell.isEmpty() {
             return true
         }

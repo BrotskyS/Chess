@@ -48,7 +48,6 @@ struct Queen: Figure {
     }
     
      func moveFigure(toCell: Cell, board: Board) {
-//        moveFigureBasic(toCell: toCell, board: board)
     }
     
 }

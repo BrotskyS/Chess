@@ -14,7 +14,7 @@ protocol BoardProtocol: AnyObject {
     func pressOn(position: Position)
 }
 
-class Board: BoardProtocol {
+final class Board: BoardProtocol {
     weak var boardView: BoardViewProtocol?
     
     var cells = Cells(cells: [])
@@ -50,11 +50,13 @@ class Board: BoardProtocol {
     
     func moveFigure(from: Cell, to: Cell) {
         from.figure?.moveFigure(toCell: to, board: self)
+        
 //        cells.cells[from.position.y][from.position.x].figure?.moveFigure(toCell: to, board: self)
 ////        from.figure?.moveFigure(toCell: to, board: self)
         cells.cells[from.position.y][from.position.x].figure = nil
 
         var figure = from.figure
+        figure?.isFirstStep = false
         figure?.setPosition(to.position)
         cells.cells[to.position.y][to.position.x].figure = figure
        
@@ -105,8 +107,8 @@ class Board: BoardProtocol {
                 return King(color: .white, position: position)
             case (_, let y) where y == 1:
                 return Pawn(color: .black, position: position)
-//            case (_, let y) where y == 6:
-//                return Pawn(color: .white, position: position)
+            case (_, let y) where y == 6:
+                return Pawn(color: .white, position: position)
             default:
                 return nil
         }
