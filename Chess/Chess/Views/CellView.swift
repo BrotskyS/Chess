@@ -57,7 +57,7 @@ class CellView: UICollectionViewCell {
         
         let labelPosition = UILabel()
         
-        labelPosition.text = "\(cell.position.x), \(cell.position.y)"
+        labelPosition.text = "\(cell.position.y), \(cell.position.x)"
         labelPosition.textColor = .blue
         labelPosition.font = .systemFont(ofSize: 10)
         contentView.addSubview(labelPosition)

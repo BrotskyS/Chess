@@ -17,74 +17,47 @@ protocol BoardProtocol: AnyObject {
 class Board: BoardProtocol {
     weak var boardView: BoardViewProtocol?
     
-    var cells: [[Cell]] = []
+    var cells = Cells(cells: [])
     
     init() {
         initCells()
     }
     
     func pressOn(position: Position) {
+        var cell = cells.getCell(position) // get cell
         
-        var cell = getCell(position)
-        if let selectedCell = findSelectedCell(), cell.figure == nil, ((selectedCell.figure?.canMove(toCell: cell, cells: cells)) != nil) {
+        // if selectedCell exist, figure on selectedCell exist and can this figure move
+        if let selectedCell = cells.findSelectedCell(),
+           let selectedFigure = selectedCell.figure,
+           selectedFigure.canMove(toCell: cell, cells: cells) {
             moveFigure(from: selectedCell, to: cell)
-            deselectAllCells()
-        }
-        // Deselect all cell and select
-        if cell.figure != nil { // press on cell with figure
-            
-            deselectAllCells()
-            highlightCells(selectedCell: getCell(position))
-            cell.selected = true
-            cells[position.y][position.x] = cell
-        } else { // press on cell without figure
-            deselectAllCells()
+            cells.deselectAllCells()
+            boardView?.reloadCells()
+            return
         }
         
+        if cell.figure != nil { // press on cell with figure
+            cells.deselectAllCells()
+            cells.highlightCells(selectedCell: cell)
+            cell.selected = true
+            cells.cells[position.y][position.x] = cell
+        } else { // press on cell without figure
+            cells.deselectAllCells()
+        }
         boardView?.reloadCells()
+  
     }
     
-    private func moveFigure(from: Cell, to: Cell) {
-        cells[from.position.y][from.position.x].figure = nil
-        
+    func moveFigure(from: Cell, to: Cell) {
+        from.figure?.moveFigure(toCell: to, board: self)
+//        cells.cells[from.position.y][from.position.x].figure?.moveFigure(toCell: to, board: self)
+////        from.figure?.moveFigure(toCell: to, board: self)
+        cells.cells[from.position.y][from.position.x].figure = nil
+
         var figure = from.figure
         figure?.setPosition(to.position)
-        cells[to.position.y][to.position.x].figure = figure
-    }
-    
-    private func findSelectedCell() -> Cell? {
-        for row in cells {
-            for cell in row {
-                if cell.selected {
-                    return cell
-                }
-            }
-        }
-        return nil
-    }
-    
-    private func highlightCells(selectedCell: Cell) {
-        for i in 0..<8 {
-            for j in 0..<8 {
-                guard let figure = selectedCell.figure else {
-                    return
-                }
-                let cell = cells[i][j]
-                
-                if figure.canMove(toCell: cell, cells: cells) {
-                    cells[i][j].available = true
-                }
-            }
-        }
-    }
-    
-    private func deselectAllCells() {
-        for i in 0..<8 {
-            for j in 0..<8 {
-                cells[i][j].selected = false
-                cells[i][j].available = false
-            }
-        }
+        cells.cells[to.position.y][to.position.x].figure = figure
+       
     }
     
     private func initCells() {
@@ -103,13 +76,9 @@ class Board: BoardProtocol {
                     row.append(cell)
                 }
             }
-            self.cells.append(row)
+            self.cells.cells.append(row)
             
         }
-    }
-    
-    private func getCell(_ position: Position) -> Cell {
-        return cells[position.y][position.x]
     }
     
     private func getInitialFigure(position: Position) -> Figure? {
@@ -123,7 +92,7 @@ class Board: BoardProtocol {
             case (3, 0):
                 return Queen(color: .black, position: position)
             case (4, 0):
-                return King(color: .black, position: position)  
+                return King(color: .black, position: position)
             case (0, 7), (7, 7):
                 return Rook(color: .white, position: position)
             case (1, 7), (6, 7):
@@ -134,13 +103,12 @@ class Board: BoardProtocol {
                 return Queen(color: .white, position: position)
             case (4, 7):
                 return King(color: .white, position: position)
-            case (let x, let y) where y == 1:
+            case (_, let y) where y == 1:
                 return Pawn(color: .black, position: position)
-            case (let x, let y) where y == 6:
-                return Pawn(color: .white, position: position)
+//            case (_, let y) where y == 6:
+//                return Pawn(color: .white, position: position)
             default:
                 return nil
         }
     }
 }
-

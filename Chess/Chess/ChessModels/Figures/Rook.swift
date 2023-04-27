@@ -12,27 +12,27 @@ struct Rook: Figure {
     let type: FigureType
     let color: ColorType
     let image: UIImage?
-//    var cell: Cell?
     var position: Position
+    var isFirstStep: Bool = true
     
-    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
+    func canMove(toCell: Cell, cells: Cells) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
         
-        let cell = cells[position.y][position.x]
+        let cell = cells.getCell(position)
         
-        if cell.isEmptyVertical(toCell: toCell, cells: cells) {
+        if cells.isEmptyVertical(fromCell: cell, toCell: toCell) {
             
             return true
         }
         
-        if cell.isEmptyHorizontal(toCell: toCell, cells: cells) {
+        if cells.isEmptyHorizontal(fromCell: cell, toCell: toCell) {
             
             return true
         }
     
-        return true
+        return false
     }
     
     init(color: ColorType, position: Position) {
@@ -41,5 +41,9 @@ struct Rook: Figure {
         self.image = color == .white ? UIImage(named: "white-rook") : UIImage(named: "black-rook")
         self.type = .rook
         self.position = position
+    }
+    
+     func moveFigure(toCell: Cell, board: Board) {
+        
     }
 }

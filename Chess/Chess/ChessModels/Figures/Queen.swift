@@ -12,26 +12,27 @@ struct Queen: Figure {
     let type: FigureType
     let color: ColorType
     let image: UIImage?
-    //    var cell: Cell?
-    var position: Position
     
-    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
+    var position: Position
+    var isFirstStep: Bool = true
+    
+    func canMove(toCell: Cell, cells: Cells) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
         
-        let cell = cells[position.y][position.x]
+        let cell = cells.getCell(position)
         
-        if cell.isEmptyVertical(toCell: toCell, cells: cells) {
+        if cells.isEmptyVertical(fromCell: cell, toCell: toCell) {
             
             return true
         }
         
-        if cell.isEmptyHorizontal(toCell: toCell, cells: cells) {
+        if cells.isEmptyHorizontal(fromCell: cell, toCell: toCell) {
             
             return true
         }
-        if cell.isEmptyDiagonal(toCell: toCell, cells: cells) {
+        if cells.isEmptyDiagonal(fromCell: cell, toCell: toCell) {
             
             return true
         }
@@ -44,6 +45,10 @@ struct Queen: Figure {
         self.image = color == .white ? UIImage(named: "white-queen") : UIImage(named: "black-queen")
         self.type = .queen
         self.position = position
+    }
+    
+     func moveFigure(toCell: Cell, board: Board) {
+//        moveFigureBasic(toCell: toCell, board: board)
     }
     
 }

@@ -12,6 +12,102 @@ enum ColorType: Equatable {
     case white
 }
 
+struct Cells {
+    var cells: [[Cell]]
+    
+    init(cells: [[Cell]]) {
+        self.cells = cells
+    }
+    
+    func getCell(_ position: Position) -> Cell {
+        return cells[position.y][position.x]
+    }
+    
+    func findSelectedCell() -> Cell? {
+        for row in cells {
+            for cell in row where cell.selected {
+                return cell
+            }
+        }
+        return nil
+    }
+    
+    mutating func deselectAllCells() {
+        for i in 0..<8 {
+            for j in 0..<8 {
+                cells[i][j].selected = false
+                cells[i][j].available = false
+            }
+        }
+    }
+    
+    mutating func highlightCells(selectedCell: Cell) {
+        for i in 0..<8 {
+            for j in 0..<8 {
+                guard let figure = selectedCell.figure else {
+                    return
+                }
+                let cell = cells[i][j]
+                
+                if figure.canMove(toCell: cell, cells: self) {
+                    cells[i][j].available = true
+                }
+            }
+        }
+    }
+    
+    func isEmptyVertical(fromCell: Cell, toCell: Cell) -> Bool {
+        if fromCell.position.x != toCell.position.x {
+            return false
+        }
+        
+        let min = min(fromCell.position.y, toCell.position.y)
+        let max = max(fromCell.position.y, toCell.position.y)
+        
+        for y in (min + 1)..<max {
+            if !cells[y][fromCell.position.x].isEmpty() {
+                print("return")
+                return false
+            }
+            
+        }
+        return true
+    }
+    
+    func isEmptyHorizontal(fromCell: Cell, toCell: Cell) -> Bool {
+        if fromCell.position.y != toCell.position.y {
+            return false
+        }
+        
+        let min = min(fromCell.position.x, toCell.position.x)
+        let max = max(fromCell.position.x, toCell.position.x)
+        
+        for x in (min + 1)..<max where !cells[fromCell.position.y][x].isEmpty() {
+            return false
+        }
+        return true
+    }
+    
+    func isEmptyDiagonal(fromCell: Cell, toCell: Cell) -> Bool {
+        let absX = abs(toCell.position.x - fromCell.position.x)
+        let absY = abs(toCell.position.y - fromCell.position.y)
+        
+        if absX != absY {
+            return false
+        }
+        let dy = fromCell.position.y < toCell.position.y ? 1 : -1
+        let dx = fromCell.position.x < toCell.position.x ? 1 : -1
+        
+        for i in 1..<absY {
+            if !cells[fromCell.position.y + dy * i][fromCell.position.x + dx * i].isEmpty() {
+                return false
+            }
+        }
+        
+        return true
+    }
+}
+
 struct Cell: Identifiable {
     let id = UUID().uuidString
     var position: Position
@@ -32,6 +128,14 @@ struct Cell: Identifiable {
         return figure == nil
     }
     
+    func isEnemy(toCell: Cell) -> Bool {
+        if (toCell.figure != nil) {
+            return figure?.color != toCell.figure?.color
+        } else {
+            return false
+        }
+    }
+    
     // User can press on cell only if figure exist
     func canPress() -> Bool {
         if figure != nil {
@@ -39,60 +143,6 @@ struct Cell: Identifiable {
         } else {
             return false
         }
-    }
-    
-    func isEmptyVertical(toCell: Cell, cells: [[Cell]]) -> Bool {
-        if position.x != toCell.position.x {
-            return false
-        }
-        
-        let min = min(position.y, toCell.position.y)
-        let max = max(position.y, toCell.position.y)
-        
-        for y in (min + 1)..<max {
-            print("y: \(position.x) \(y), \(cells[y][position.x].isEmpty())")
-            let test = cells[y][position.x]
-            
-            if !cells[y][position.x].isEmpty() {
-                print("return")
-                return false
-            }
-            
-        }
-        return true
-    }
-    
-    func isEmptyHorizontal(toCell: Cell, cells: [[Cell]]) -> Bool {
-        if position.y != toCell.position.y {
-            return false
-        }
-        
-        let min = min(position.x, toCell.position.x)
-        let max = max(position.x, toCell.position.x)
-        
-        for x in (min + 1)..<max where !cells[position.y][x].isEmpty() {
-            return false
-        }
-        return true
-    }
-    
-    func isEmptyDiagonal(toCell: Cell, cells: [[Cell]]) -> Bool {
-        let absX = abs(toCell.position.x - position.x)
-        let absY = abs(toCell.position.y - position.y)
-        
-        if absX != absY {
-            return false
-        }
-        let dy = position.y < toCell.position.y ? 1 : -1
-        let dx = position.x < toCell.position.x ? 1 : -1
-        
-        for i in 1..<absY {
-            if !cells[position.y + dy * i][position.x + dx * i].isEmpty() {
-                return false
-            }
-        }
-        
-        return true
     }
     
     mutating func setFigure(_ figure: Figure) {

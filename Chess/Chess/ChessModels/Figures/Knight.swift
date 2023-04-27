@@ -14,13 +14,14 @@ struct Knight: Figure {
     let image: UIImage?
 //    var cell: Cell?
     var position: Position
+    var isFirstStep: Bool = true
     
-    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
+    func canMove(toCell: Cell, cells: Cells) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
         
-        let cell = cells[position.y][position.x]
+        let cell = cells.getCell(position)
         let dx = abs(cell.position.x - toCell.position.x)
         let dy = abs(cell.position.y - toCell.position.y)
         
@@ -33,5 +34,9 @@ struct Knight: Figure {
         self.image = color == .white ? UIImage(named: "white-knight") : UIImage(named: "black-knight")
         self.type = .knight
         self.position = position
+    }
+    
+     func moveFigure(toCell: Cell, board: Board) {
+        
     }
 }

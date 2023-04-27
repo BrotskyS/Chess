@@ -60,7 +60,7 @@ extension BoardView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return board.cells.count * board.cells[0].count
+        return board.cells.cells.count * board.cells.cells[0].count
         
     }
     
@@ -72,7 +72,7 @@ extension BoardView: UICollectionViewDataSource {
         let row = indexPath.item / boardSize
         let column = indexPath.item % boardSize
         
-        let cellData = board.cells[row][column]
+        let cellData = board.cells.cells[row][column]
         
         cell.configure(cell: cellData)
         

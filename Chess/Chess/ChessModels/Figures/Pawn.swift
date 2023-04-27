@@ -12,38 +12,44 @@ struct Pawn: Figure {
     let type: FigureType
     let image: UIImage?
     let color: ColorType
-//    var cell: Cell?
     var position: Position
-
-    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
+    
+    var isFirstStep: Bool = true
+    
+    func canMove(toCell: Cell, cells: Cells) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
+        let cell = cells.getCell(position)
         
-        let cell = cells[position.y][position.x]
+        let direction = color == .black ? 1 : -1
+        let firstStepDirection = color == .black ? 2 : -2
         
-        if cell.isEmptyVertical(toCell: toCell, cells: cells) {
-            
+        let isSameY = toCell.position.y == cell.position.y + direction
+        let isSameYFirstStep = isFirstStep && toCell.position.y == cell.position.y + firstStepDirection
+        let isSameX = toCell.position.x == cell.position.x
+        
+        
+        if (isSameY || isSameYFirstStep) && isSameX && cells.isEmptyVertical(fromCell: cell, toCell: toCell) && toCell.isEmpty() {
             return true
         }
         
-        if cell.isEmptyHorizontal(toCell: toCell, cells: cells) {
-            
-            return true
-        }
-        if cell.isEmptyDiagonal(toCell: toCell, cells: cells) {
-            
+        if isSameY && abs(toCell.position.x - cell.position.x) == 1 && cell.isEnemy(toCell: toCell) {
             return true
         }
         
         return false
     }
-
+    
     init(color: ColorType, position: Position) {
         self.color = color
         
         self.image = color == .white ? UIImage(named: "white-pawn") : UIImage(named: "black-pawn")
         self.type = .pawn
         self.position = position
+    }
+    
+     func moveFigure(toCell: Cell, board: Board) {
+        
     }
 }

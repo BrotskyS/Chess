@@ -14,19 +14,20 @@ struct Bishop: Figure {
     let image: UIImage?
 //    var cell: Cell?
     var position: Position
+    var isFirstStep: Bool = true
     
-    func canMove(toCell: Cell, cells: [[Cell]]) -> Bool {
+    func canMove(toCell: Cell, cells: Cells) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
         
-        let cell = cells[position.y][position.x]
+        let cell = cells.getCell(position)
         
-        if cell.isEmptyDiagonal(toCell: toCell, cells: cells) {
+        if cells.isEmptyDiagonal(fromCell: cell, toCell: toCell) {
             
             return true
         }
-        return true
+        return false
     }
     
     init(color: ColorType, position: Position) {
@@ -35,5 +36,9 @@ struct Bishop: Figure {
         self.image = color == .white ? UIImage(named: "white-bishop") : UIImage(named: "black-bishop")
         self.type = .bishop
         self.position = position
+    }
+    
+     func moveFigure(toCell: Cell, board: Board) {
+        
     }
 }
