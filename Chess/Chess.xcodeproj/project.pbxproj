@@ -31,6 +31,7 @@
 		0D18767229F09A73009A2A1B /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18767129F09A73009A2A1B /* King.swift */; };
 		0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */; };
 		0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */; };
+		0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAEF04329FAF62200EB4EB9 /* Move.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0D18767129F09A73009A2A1B /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 		0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
+		0DAEF04329FAF62200EB4EB9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				0D18765729F0782F009A2A1B /* Board.swift */,
 				0D18765929F078D9009A2A1B /* Cell.swift */,
 				0D18766729F09925009A2A1B /* Position.swift */,
+				0DAEF04329FAF62200EB4EB9 /* Move.swift */,
 			);
 			path = ChessModels;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */,
 				0D18766329F08CB2009A2A1B /* Figure.swift in Sources */,
 				0D18763929F05E28009A2A1B /* SceneDelegate.swift in Sources */,
+				0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */,
 				0D18766629F09633009A2A1B /* Pawn.swift in Sources */,
 				0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */,
 				0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */,

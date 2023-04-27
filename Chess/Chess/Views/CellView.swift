@@ -18,7 +18,6 @@ class CellView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func configure(cell: Cell) {
         
         for subview in contentView.subviews {

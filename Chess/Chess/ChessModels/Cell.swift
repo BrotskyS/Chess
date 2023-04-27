@@ -14,10 +14,18 @@ enum ColorType: Equatable {
 
 struct Cells {
     var cells: [[Cell]]
+    var historyMoves: [Move] = []
     
     init(cells: [[Cell]]) {
         self.cells = cells
     }
+    mutating func makeMove(from: Position, to: Position, figure: Figure) {
+        let move = Move(from: from, to: to, figure: figure)
+        historyMoves.append(move)
+    }
+    func isValidPosition(position: Position) -> Bool {
+            return (0..<8).contains(position.y) && (0..<8).contains(position.x)
+        }
     
     func getCell(_ position: Position) -> Cell {
         return cells[position.y][position.x]
@@ -64,12 +72,8 @@ struct Cells {
         let min = min(fromCell.position.y, toCell.position.y)
         let max = max(fromCell.position.y, toCell.position.y)
         
-        for y in (min + 1)..<max {
-            if !cells[y][fromCell.position.x].isEmpty() {
-                print("return")
-                return false
-            }
-            
+        for y in (min + 1)..<max where !cells[y][fromCell.position.x].isEmpty() {
+            return false
         }
         return true
     }
@@ -98,10 +102,8 @@ struct Cells {
         let dy = fromCell.position.y < toCell.position.y ? 1 : -1
         let dx = fromCell.position.x < toCell.position.x ? 1 : -1
         
-        for i in 1..<absY {
-            if !cells[fromCell.position.y + dy * i][fromCell.position.x + dx * i].isEmpty() {
-                return false
-            }
+        for i in 1..<absY where !cells[fromCell.position.y + dy * i][fromCell.position.x + dx * i].isEmpty() {
+            return false
         }
         
         return true
@@ -129,7 +131,7 @@ struct Cell: Identifiable {
     }
     
     func isEnemy(toCell: Cell) -> Bool {
-        if (toCell.figure != nil) {
+        if toCell.figure != nil {
             return figure?.color != toCell.figure?.color
         } else {
             return false

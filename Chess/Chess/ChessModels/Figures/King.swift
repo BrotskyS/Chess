@@ -44,7 +44,6 @@ struct King: Figure {
     }
     
     private func canCastle(toCell: Cell, cells: Cells) -> (from: Cell, to: Cell)? {
-        print("isFirstStep: \(isFirstStep)")
         guard isFirstStep == true else {
             return nil
         }
