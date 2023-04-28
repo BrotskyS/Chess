@@ -17,15 +17,16 @@ protocol BoardProtocol: AnyObject {
 final class Board: BoardProtocol {
     weak var boardView: BoardViewProtocol?
     
-    var cells = Cells(cells: [])
+    var cells = Cells()
     
     init() {
         initCells()
     }
     
     func pressOn(position: Position) {
+        let lastMove = cells.historyMoves.last
         var cell = cells.getCell(position) // get cell
-        
+     
         // if selectedCell exist, figure on selectedCell exist and can this figure move
         if let selectedCell = cells.findSelectedCell(),
            let selectedFigure = selectedCell.figure,
@@ -36,7 +37,7 @@ final class Board: BoardProtocol {
             return
         }
         
-        if cell.figure != nil { // press on cell with figure
+        if cell.figure != nil && lastMove?.figure.color != cell.figure?.color { // press on cell with figure
             cells.deselectAllCells()
             cells.highlightCells(selectedCell: cell)
             cell.selected = true

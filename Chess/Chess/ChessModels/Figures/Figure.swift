@@ -32,9 +32,11 @@ extension Figure {
     func canMoveBasicRule(toCell: Cell) -> Bool {
         if toCell.figure?.color == color {
             return false
-        } else if toCell.figure?.type == .king {
-            return false
-        } else {
+        }
+//        else if toCell.figure?.type == .king {
+//            return false
+//        }
+        else {
             return true
         }
     }
@@ -43,9 +45,4 @@ extension Figure {
         self.position = position
     }
     
-//    mutating func moveFigureBasic(toCell: Cell, board: Board) {
-//        board.cells.cells[position.y][position.x].figure = nil
-//        setPosition(toCell.position)
-//        board.cells.cells[toCell.position.y][toCell.position.x].figure = self
-//    }
 }

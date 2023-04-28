@@ -13,19 +13,16 @@ enum ColorType: Equatable {
 }
 
 struct Cells {
-    var cells: [[Cell]]
+    var cells: [[Cell]] = []
     var historyMoves: [Move] = []
     
-    init(cells: [[Cell]]) {
-        self.cells = cells
-    }
     mutating func makeMove(from: Position, to: Position, figure: Figure) {
         let move = Move(from: from, to: to, figure: figure)
         historyMoves.append(move)
     }
     func isValidPosition(position: Position) -> Bool {
-            return (0..<8).contains(position.y) && (0..<8).contains(position.x)
-        }
+        return (0..<8).contains(position.y) && (0..<8).contains(position.x)
+    }
     
     func getCell(_ position: Position) -> Cell {
         return cells[position.y][position.x]
@@ -55,9 +52,9 @@ struct Cells {
                 guard let figure = selectedCell.figure else {
                     return
                 }
-                let cell = cells[i][j]
+                let toCell = cells[i][j]
                 
-                if figure.canMove(toCell: cell, cells: self) {
+                if figure.canMove(toCell: toCell, cells: self) && !isCheck(fromCell: selectedCell, toCell: toCell) {
                     cells[i][j].available = true
                 }
             }
@@ -108,6 +105,47 @@ struct Cells {
         
         return true
     }
+
+    func isCheck(fromCell: Cell, toCell: Cell) -> Bool {
+        
+        guard var figure = fromCell.figure else {
+            return false
+        }
+        var copyCells = Cells(cells: self.cells)
+           
+        copyCells.cells[fromCell.position.y][fromCell.position.x].figure = nil
+
+        figure.setPosition(toCell.position)
+        copyCells.cells[toCell.position.y][toCell.position.x].figure = figure
+
+        guard let king = findKingPosition(color: figure.color, cells: copyCells.cells) else {
+            return false
+        }
+
+        for i in 0..<8 {
+            for j in 0..<8 {
+                
+                let cell = copyCells.cells[i][j]
+                if cell.figure != nil && cell.figure?.canMove(toCell: king, cells: copyCells) == true {
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
+
+    func findKingPosition(color: ColorType, cells: [[Cell]]) -> Cell? {
+        for i in 0..<8 {
+            for j in 0..<8 {
+                let cell = cells[i][j]
+                if let figure = cell.figure, figure.type == .king, figure.color == color {
+                    return cell
+                }
+            }
+        }
+        return nil
+    }
 }
 
 struct Cell: Identifiable {
@@ -149,5 +187,8 @@ struct Cell: Identifiable {
     
     mutating func setFigure(_ figure: Figure) {
         self.figure = figure
+    }
+    static func placeholder() -> Cell {
+        return Cell(position: Position(x: 0, y: 0), color: .black, available: false, selected: false)
     }
 }

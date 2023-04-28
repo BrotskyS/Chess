@@ -27,7 +27,7 @@ struct King: Figure {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
-        
+//        
         let cell = cells.getCell(position)
         
         // basic role for king

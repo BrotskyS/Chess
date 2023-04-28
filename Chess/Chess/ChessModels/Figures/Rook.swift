@@ -46,4 +46,5 @@ struct Rook: Figure {
      func moveFigure(toCell: Cell, board: Board) {
         
     }
+    
 }
