@@ -43,6 +43,22 @@ struct King: Figure {
         return false
     }
     
+    private func isCheckInHorizontal(fromCell: Cell, toCell: Cell, cells: Cells) -> Bool {
+        if fromCell.position.y != toCell.position.y {
+            return false
+        }
+        
+        let min = min(fromCell.position.x, toCell.position.x)
+        let max = max(fromCell.position.x, toCell.position.x)
+        
+//        [fromCell.position.y + dy * i][fromCell.position.x + dx * i]
+        for x in (min + 1)..<max where cells.isCheck(fromCell: fromCell, toCell: cells.cells[fromCell.position.y][x]) {
+            
+            return true
+        }
+        return false
+    }
+    
     private func canCastle(toCell: Cell, cells: Cells) -> (from: Cell, to: Cell)? {
         guard isFirstStep == true else {
             return nil
@@ -54,10 +70,13 @@ struct King: Figure {
         guard (
             kingRookCell.figure?.type == .rook &&
             kingRookCell.figure?.isFirstStep == true &&
-            cells.isEmptyHorizontal(fromCell: cell, toCell: kingRookCell)) ||
+            cells.isEmptyHorizontal(fromCell: cell, toCell: kingRookCell) &&
+            !isCheckInHorizontal(fromCell: cell, toCell: kingRookCell, cells: cells)
+        ) ||
             (queenRookCell.figure?.type == .rook &&
              queenRookCell.figure?.isFirstStep == true &&
-             cells.isEmptyHorizontal(fromCell: cell, toCell: queenRookCell))
+             cells.isEmptyHorizontal(fromCell: cell, toCell: queenRookCell)) &&
+                !isCheckInHorizontal(fromCell: cell, toCell: queenRookCell, cells: cells)
         else {
             return nil
         }

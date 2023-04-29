@@ -23,6 +23,19 @@ final class Board: BoardProtocol {
         initCells()
     }
     
+    func canSelectCell(cell: Cell) -> Bool {
+        let lastMove = cells.historyMoves.last
+        
+        if lastMove == nil && cell.figure?.color == .white {
+            return true
+        }
+        if  let lastMove = lastMove, lastMove.figure.color != cell.figure?.color {
+            return true
+        }
+        
+        return false
+    }
+    
     func pressOn(position: Position) {
         let lastMove = cells.historyMoves.last
         var cell = cells.getCell(position) // get cell
@@ -37,7 +50,7 @@ final class Board: BoardProtocol {
             return
         }
         
-        if cell.figure != nil && lastMove?.figure.color != cell.figure?.color { // press on cell with figure
+        if cell.figure != nil && canSelectCell(cell: cell) { // press on cell with figure
             cells.deselectAllCells()
             cells.highlightCells(selectedCell: cell)
             cell.selected = true
