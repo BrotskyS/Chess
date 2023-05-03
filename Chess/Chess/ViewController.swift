@@ -10,8 +10,9 @@ import SnapKit
 
 class ViewController: UIViewController {
     private var chessboardView: BoardView = {
-        let boardView = BoardView()
         let board = Board()
+        let boardView = BoardView()
+ 
         
         board.boardView = boardView
         boardView.board = board

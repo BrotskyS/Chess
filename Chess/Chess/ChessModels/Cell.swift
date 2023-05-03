@@ -16,7 +16,7 @@ struct Cell: Identifiable {
     let id = UUID().uuidString
     var position: Position
     let color: ColorType
-    var figure: Figure?
+    var figure: (any Figure)?
     var available: Bool
     var selected: Bool
     
@@ -49,7 +49,7 @@ struct Cell: Identifiable {
         }
     }
     
-    mutating func setFigure(_ figure: Figure) {
+    mutating func setFigure(_ figure: any Figure) {
         self.figure = figure
     }
     static func placeholder() -> Cell {

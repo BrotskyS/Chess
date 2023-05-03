@@ -31,14 +31,14 @@ class CellView: UICollectionViewCell {
         }
         
         // figure exist on cell
-        if cell.figure != nil {
-            let image = UIImageView(image: cell.figure?.image)
-            
-            contentView.addSubview(image)
-            image.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-        }
+//        if cell.figure != nil {
+//            let image = UIImageView(image: cell.figure?.image)
+//            
+//            contentView.addSubview(image)
+//            image.snp.makeConstraints { make in
+//                make.edges.equalToSuperview()
+//            }
+//        }
         
         // Show dot if cell available and one cell selected
         if cell.available {

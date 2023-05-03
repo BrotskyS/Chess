@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Equatable {
+struct Position: Equatable, Hashable {
     let x: Int
     let y: Int
 }

@@ -17,7 +17,8 @@ enum FigureType {
     case king
 }
 
-protocol Figure {
+protocol Figure: Identifiable {
+    var id: UUID { get }
     var type: FigureType { get }
     var image: UIImage? { get }
     var color: ColorType { get }
@@ -29,6 +30,7 @@ protocol Figure {
 }
 
 extension Figure {
+    var id: UUID { UUID() }
     func canMoveBasicRule(toCell: Cell) -> Bool {
         if toCell.figure?.color == color {
             return false

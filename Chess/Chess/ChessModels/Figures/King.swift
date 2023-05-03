@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct King: Figure {
+    
     let type: FigureType
     let color: ColorType
     let image: UIImage?

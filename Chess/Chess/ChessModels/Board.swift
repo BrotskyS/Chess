@@ -66,6 +66,7 @@ final class Board: BoardProtocol {
         guard var figure = from.figure else {
             return
         }
+        boardView?.moveFigure(from: from, to: to)
         figure.moveFigure(toCell: to, board: self)
         cells.makeMove(from: from.position, to: to.position, figure: figure)
        
@@ -81,7 +82,7 @@ final class Board: BoardProtocol {
         cells.cells[from.y][from.x].figure = nil
     }
     
-    private func initCells() {
+    func initCells() {
         for i in 0..<8 {
             var row: [Cell] = []
             for j in 0..<8 {
@@ -101,7 +102,7 @@ final class Board: BoardProtocol {
         }
     }
     
-    private func getInitialFigure(position: Position) -> Figure? {
+    private func getInitialFigure(position: Position) -> (any Figure)? {
         switch (position.x, position.y) {
             case (0, 0), (7, 0):
                 return  Rook(color: .black, position: position)
@@ -123,10 +124,10 @@ final class Board: BoardProtocol {
                 return Queen(color: .white, position: position)
             case (4, 7):
                 return King(color: .white, position: position)
-            case (_, let y) where y == 1:
-                return Pawn(color: .black, position: position)
-            case (_, let y) where y == 6:
-                return Pawn(color: .white, position: position)
+//            case (_, let y) where y == 1:
+//                return Pawn(color: .black, position: position)
+//            case (_, let y) where y == 6:
+//                return Pawn(color: .white, position: position)
             default:
                 return nil
         }

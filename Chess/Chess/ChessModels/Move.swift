@@ -10,5 +10,5 @@ import Foundation
 struct Move {
     let from: Position
     let to: Position
-    let figure: Figure
+    let figure: any Figure
 }

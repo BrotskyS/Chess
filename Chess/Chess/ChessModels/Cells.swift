@@ -28,9 +28,13 @@ struct Cells {
         }
         return nil
     }
+    
+    func getIndexPathInt(_ position: Position) -> Int {
+        return (position.y) * 8 + position.x
+    }
     // MARK: - mutating
     
-    mutating func makeMove(from: Position, to: Position, figure: Figure) {
+    mutating func makeMove(from: Position, to: Position, figure: any Figure) {
         let move = Move(from: from, to: to, figure: figure)
         historyMoves.append(move)
     }
