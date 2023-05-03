@@ -51,8 +51,7 @@ struct King: Figure {
         let min = min(fromCell.position.x, toCell.position.x)
         let max = max(fromCell.position.x, toCell.position.x)
         
-//        [fromCell.position.y + dy * i][fromCell.position.x + dx * i]
-        for x in (min + 1)..<max where cells.isCheck(fromCell: fromCell, toCell: cells.cells[fromCell.position.y][x]) {
+        for x in (min + 1)..<max where cells.isCheck(fromCell: fromCell, toCell: cells.cells[fromCell.position.y][x], cells: cells) {
             
             return true
         }

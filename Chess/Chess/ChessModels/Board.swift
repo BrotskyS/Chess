@@ -18,7 +18,7 @@ final class Board: BoardProtocol {
     weak var boardView: BoardViewProtocol?
     
     var cells = Cells()
-    
+
     init() {
         initCells()
     }
@@ -37,11 +37,11 @@ final class Board: BoardProtocol {
     }
     
     func pressOn(position: Position) {
-        let lastMove = cells.historyMoves.last
+        
         var cell = cells.getCell(position) // get cell
      
         // if selectedCell exist, figure on selectedCell exist and can this figure move
-        if let selectedCell = cells.findSelectedCell(),
+        if let selectedCell = cells.getSelectedCell(),
            let selectedFigure = selectedCell.figure,
            selectedFigure.canMove(toCell: cell, cells: cells) {
             moveFigure(from: selectedCell, to: cell)
@@ -88,7 +88,6 @@ final class Board: BoardProtocol {
                 let position = Position(x: j, y: i)
                 let figure = getInitialFigure(position: position)
                 if (i + j) % 2 != 0 {
-                    print("position: \(position)")
                     let cell = Cell(position: position, color: .black, figure: figure, available: false, selected: false)
                     
                     row.append(cell)

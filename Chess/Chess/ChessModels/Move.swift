@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Move {
     let from: Position
     let to: Position

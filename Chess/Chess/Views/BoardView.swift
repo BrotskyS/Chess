@@ -78,6 +78,7 @@ extension BoardView: UICollectionViewDataSource {
         
         return cell
     }
+    
 }
 
 extension BoardView: UICollectionViewDelegate {
@@ -86,6 +87,7 @@ extension BoardView: UICollectionViewDelegate {
         let column = indexPath.item % boardSize
         
         board.pressOn(position: Position(x: column, y: row))
+ 
     }
 }
 
