@@ -43,7 +43,7 @@ final class Board: BoardProtocol {
         // if selectedCell exist, figure on selectedCell exist and can this figure move
         if let selectedCell = cells.getSelectedCell(),
            let selectedFigure = selectedCell.figure,
-           selectedFigure.canMove(toCell: cell, cells: cells) {
+           selectedFigure.canMove(toCell: cell, cells: cells, isHighlightCells: true) {
             moveFigure(from: selectedCell, to: cell)
             cells.deselectAllCells()
             boardView?.reloadCells()

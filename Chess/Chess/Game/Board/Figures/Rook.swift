@@ -15,7 +15,7 @@ struct Rook: Figure {
     var position: Position
     var isFirstStep: Bool = true
     
-    func canMove(toCell: Cell, cells: Cells) -> Bool {
+    func canMove(toCell: Cell, cells: Cells, isHighlightCells: Bool) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }

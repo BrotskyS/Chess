@@ -25,7 +25,7 @@ protocol Figure: Identifiable {
     var position: Position { get set }
     var isFirstStep: Bool { get set }
     
-    func canMove(toCell: Cell, cells: Cells) -> Bool
+    func canMove(toCell: Cell, cells: Cells, isHighlightCells: Bool) -> Bool
     func moveFigure(toCell: Cell, board: Board)
 }
 

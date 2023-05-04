@@ -61,7 +61,7 @@ struct Cells {
                 let toCell = cells[i][j]
                 
                 let fakeMoveCells = fakeMove(fromCell: selectedCell, toCell: toCell)
-                if figure.canMove(toCell: toCell, cells: self) && !isCheck(fromCell: selectedCell, toCell: toCell, cells: fakeMoveCells) {
+                if figure.canMove(toCell: toCell, cells: self, isHighlightCells: true) && !isCheck(fromCell: selectedCell, toCell: toCell, cells: fakeMoveCells) {
                     cells[i][j].available = true
                 }
             }
@@ -81,7 +81,7 @@ struct Cells {
             for j in 0..<8 {
                 
                 let cell = cells.cells[i][j]
-                if cell.figure != nil && cell.figure?.canMove(toCell: king, cells: cells) == true {
+                if cell.figure != nil && cell.figure?.canMove(toCell: king, cells: cells, isHighlightCells: false) == true {
                     return true
                 }
             }
@@ -110,6 +110,7 @@ private extension Cells {
     func findKingPosition(color: ColorType, cells: [[Cell]]) -> Cell? {
         for i in 0..<8 {
             for j in 0..<8 {
+//                print("test: \(cells[i][j])")
                 let cell = cells[i][j]
                 if let figure = cell.figure, figure.type == .king, figure.color == color {
                     return cell

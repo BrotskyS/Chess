@@ -24,7 +24,7 @@ struct Pawn: Figure {
         self.position = position
     }
     
-    func canMove(toCell: Cell, cells: Cells) -> Bool {
+    func canMove(toCell: Cell, cells: Cells, isHighlightCells: Bool) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }

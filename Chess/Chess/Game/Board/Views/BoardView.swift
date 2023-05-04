@@ -132,23 +132,15 @@ extension BoardView: BoardViewProtocol {
             
             return
         }
-        //
-        //        if let toFigure = to.figure {
-        //            UIView.animate(withDuration: 0.1) {
-        //                self.figures.viewWithTag(toFigure.position.hashValue)?.removeFromSuperview()
-        //            }
-        //        }
         
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.1) {
             self.figures.viewWithTag(from.position.hashValue)?.frame = toCell.frame
         }
         self.figures.viewWithTag(from.position.hashValue)?.tag = to.position.hashValue
         
     }
     func deleteFigure(from: Position) {
-        UIView.animate(withDuration: 0.1) {
-            self.figures.viewWithTag(from.hashValue)?.removeFromSuperview()
-        }
+        self.figures.viewWithTag(from.hashValue)?.removeFromSuperview()
     }
     
 }

@@ -43,7 +43,9 @@ class CellView: UICollectionViewCell {
         // Show dot if cell available and one cell selected
         if cell.available {
             let dotView = UIView()
-            dotView.backgroundColor = .red
+            dotView.backgroundColor = .darkGray
+            dotView.layer.cornerRadius = 5
+            dotView.layer.masksToBounds = true
             contentView.addSubview(dotView)
             
             dotView.snp.makeConstraints { make in

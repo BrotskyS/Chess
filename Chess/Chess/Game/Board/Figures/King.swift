@@ -24,20 +24,20 @@ struct King: Figure {
         self.position = position
     }
     
-    func canMove(toCell: Cell, cells: Cells) -> Bool {
+    func canMove(toCell: Cell, cells: Cells, isHighlightCells: Bool) -> Bool {
         if !canMoveBasicRule(toCell: toCell) {
             return false
         }
-//        
+        //
         let cell = cells.getCell(position)
         
         // basic role for king
         if abs(toCell.position.x - cell.position.x) <= 1 && abs(toCell.position.y - cell.position.y) <= 1 {
             return toCell.isEmpty() || cell.isEnemy(toCell: toCell)
         }
-       
+        
         // Check is king can castle
-        if canCastle(toCell: toCell, cells: cells) != nil {
+        if isHighlightCells && canCastle(toCell: toCell, cells: cells) != nil {
             return true
         }
         
@@ -53,7 +53,6 @@ struct King: Figure {
         let max = max(fromCell.position.x, toCell.position.x)
         
         for x in (min + 1)..<max where cells.isCheck(fromCell: fromCell, toCell: cells.cells[fromCell.position.y][x], cells: cells) {
-            
             return true
         }
         return false
@@ -73,9 +72,9 @@ struct King: Figure {
             cells.isEmptyHorizontal(fromCell: cell, toCell: kingRookCell) &&
             !isCheckInHorizontal(fromCell: cell, toCell: kingRookCell, cells: cells)
         ) ||
-            (queenRookCell.figure?.type == .rook &&
-             queenRookCell.figure?.isFirstStep == true &&
-             cells.isEmptyHorizontal(fromCell: cell, toCell: queenRookCell)) &&
+                (queenRookCell.figure?.type == .rook &&
+                 queenRookCell.figure?.isFirstStep == true &&
+                 cells.isEmptyHorizontal(fromCell: cell, toCell: queenRookCell)) &&
                 !isCheckInHorizontal(fromCell: cell, toCell: queenRookCell, cells: cells)
         else {
             return nil
@@ -89,10 +88,10 @@ struct King: Figure {
         }
         return nil
     }
-   
+    
     func moveFigure(toCell: Cell, board: Board) {
-         if let canCastle = canCastle(toCell: toCell, cells: board.cells) {
-             board.moveFigure(from: canCastle.from, to: canCastle.to)
-         }
+        if let canCastle = canCastle(toCell: toCell, cells: board.cells) {
+            board.moveFigure(from: canCastle.from, to: canCastle.to)
+        }
     }
 }
