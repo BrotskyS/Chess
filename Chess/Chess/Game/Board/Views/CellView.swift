@@ -54,17 +54,20 @@ class CellView: UICollectionViewCell {
             }
         }
         
-        let labelPosition = UILabel()
-        
-        labelPosition.text = "\(cell.position.y), \(cell.position.x)"
-        labelPosition.textColor = .blue
-        labelPosition.font = .systemFont(ofSize: 10)
-        contentView.addSubview(labelPosition)
-        
-        labelPosition.snp.makeConstraints { make in
-            make.leading.equalTo(0)
-            make.bottom.equalTo(0)
+        if false { // enable for debelopment
+            let labelPosition = UILabel()
             
+            labelPosition.text = "\(cell.position.y), \(cell.position.x)"
+            labelPosition.textColor = .blue
+            labelPosition.font = .systemFont(ofSize: 10)
+            contentView.addSubview(labelPosition)
+            
+            labelPosition.snp.makeConstraints { make in
+                make.leading.equalTo(0)
+                make.bottom.equalTo(0)
+                
+            }
         }
+        
     }
 }

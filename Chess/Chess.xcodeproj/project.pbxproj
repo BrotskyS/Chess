@@ -29,6 +29,9 @@
 		0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766D29F09A4A009A2A1B /* Bishop .swift */; };
 		0D18767029F09A65009A2A1B /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18766F29F09A65009A2A1B /* Queen.swift */; };
 		0D18767229F09A73009A2A1B /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18767129F09A73009A2A1B /* King.swift */; };
+		0D39BECE2A04148B006651AB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D39BECD2A04148B006651AB /* GameViewController.swift */; };
+		0D39BED02A0414B3006651AB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D39BECF2A0414B3006651AB /* Game.swift */; };
+		0D39BED32A041EDB006651AB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D39BED22A041EDB006651AB /* Player.swift */; };
 		0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */; };
 		0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */; };
 		0D7238B929FDB878007A7838 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7238B829FDB878007A7838 /* Cells.swift */; };
@@ -56,6 +59,9 @@
 		0D18766D29F09A4A009A2A1B /* Bishop .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bishop .swift"; sourceTree = "<group>"; };
 		0D18766F29F09A65009A2A1B /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		0D18767129F09A73009A2A1B /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
+		0D39BECD2A04148B006651AB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0D39BECF2A0414B3006651AB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		0D39BED22A041EDB006651AB /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		0D7238B829FDB878007A7838 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
@@ -96,9 +102,9 @@
 		0D18763529F05E28009A2A1B /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				0D39BECA2A0413DD006651AB /* Game */,
 				0D4AAAEC29F1B60C00C6F427 /* Extentions */,
 				0D18765629F077F0009A2A1B /* ChessModels */,
-				0D18764F29F0604A009A2A1B /* Views */,
 				0D18763629F05E28009A2A1B /* AppDelegate.swift */,
 				0D18763829F05E28009A2A1B /* SceneDelegate.swift */,
 				0D18763A29F05E28009A2A1B /* ViewController.swift */,
@@ -122,12 +128,6 @@
 		0D18765629F077F0009A2A1B /* ChessModels */ = {
 			isa = PBXGroup;
 			children = (
-				0D18766429F09606009A2A1B /* Figures */,
-				0D18765729F0782F009A2A1B /* Board.swift */,
-				0D18766729F09925009A2A1B /* Position.swift */,
-				0DAEF04329FAF62200EB4EB9 /* Move.swift */,
-				0D7238B829FDB878007A7838 /* Cells.swift */,
-				0D18765929F078D9009A2A1B /* Cell.swift */,
 			);
 			path = ChessModels;
 			sourceTree = "<group>";
@@ -144,6 +144,47 @@
 				0D18767129F09A73009A2A1B /* King.swift */,
 			);
 			path = Figures;
+			sourceTree = "<group>";
+		};
+		0D39BECA2A0413DD006651AB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0D39BED12A041ED3006651AB /* Player */,
+				0D39BECC2A0413EE006651AB /* Board */,
+				0D39BECB2A0413E8006651AB /* Game */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0D39BECB2A0413E8006651AB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0D39BECD2A04148B006651AB /* GameViewController.swift */,
+				0D39BECF2A0414B3006651AB /* Game.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		0D39BECC2A0413EE006651AB /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				0D18764F29F0604A009A2A1B /* Views */,
+				0D18766429F09606009A2A1B /* Figures */,
+				0D18765729F0782F009A2A1B /* Board.swift */,
+				0D18766729F09925009A2A1B /* Position.swift */,
+				0DAEF04329FAF62200EB4EB9 /* Move.swift */,
+				0D7238B829FDB878007A7838 /* Cells.swift */,
+				0D18765929F078D9009A2A1B /* Cell.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		0D39BED12A041ED3006651AB /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				0D39BED22A041EDB006651AB /* Player.swift */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		0D4AAAEC29F1B60C00C6F427 /* Extentions */ = {
@@ -258,6 +299,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D39BED32A041EDB006651AB /* Player.swift in Sources */,
+				0D39BECE2A04148B006651AB /* GameViewController.swift in Sources */,
 				0D18763B29F05E28009A2A1B /* ViewController.swift in Sources */,
 				0D18765129F061D5009A2A1B /* BoardView.swift in Sources */,
 				0D18767029F09A65009A2A1B /* Queen.swift in Sources */,
@@ -273,6 +316,7 @@
 				0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */,
 				0D18766E29F09A4A009A2A1B /* Bishop .swift in Sources */,
 				0D18766A29F099DF009A2A1B /* Rook.swift in Sources */,
+				0D39BED02A0414B3006651AB /* Game.swift in Sources */,
 				0D18766829F09925009A2A1B /* Position.swift in Sources */,
 				0D18765A29F078D9009A2A1B /* Cell.swift in Sources */,
 				0D7238B929FDB878007A7838 /* Cells.swift in Sources */,

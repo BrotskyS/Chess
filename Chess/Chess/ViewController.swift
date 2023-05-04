@@ -7,31 +7,41 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
-    private var chessboardView: BoardView = {
-        let board = Board()
-        let boardView = BoardView()
- 
+    
+    private let openGameButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Open Game", for: .normal)
+        button.backgroundColor = .red
         
-        board.boardView = boardView
-        boardView.board = board
-        
-        return boardView
+        return button
     }()
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        view.addSubview(boardView)
-        
-        view.addSubview(chessboardView)
-        chessboardView.snp.makeConstraints { make in
+        view.addSubview(openGameButton)
+        openGameButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalTo(view.snp.width)
+            
         }
+        
+        openGameButton.rx.tap
+            .bind { _ in
+                self.addGame()
+            }
+            .disposed(by: disposeBag)
+        
+        addGame()
     }
     
-    //        view.present(boardView, animated: true)
-    // Do any additional setup after loading the view.
-    
+    private func addGame() {
+        let game = GameViewController()
+        
+        navigationController?.pushViewController(game, animated: true)
+    }
 }

@@ -66,12 +66,14 @@ final class Board: BoardProtocol {
         guard var figure = from.figure else {
             return
         }
-        boardView?.moveFigure(from: from, to: to)
+       
         figure.moveFigure(toCell: to, board: self)
         cells.makeMove(from: from.position, to: to.position, figure: figure)
-       
-        deleteFigure(from.position)
-
+    
+        cells.cells[from.position.y][from.position.x].figure = nil
+        boardView?.deleteFigure(from: to.position)
+        boardView?.moveFigure(from: from, to: to)
+        
         figure.isFirstStep = false
         figure.setPosition(to.position)
         cells.cells[to.position.y][to.position.x].figure = figure
@@ -79,6 +81,7 @@ final class Board: BoardProtocol {
     }
     
     func deleteFigure(_ from: Position) {
+        boardView?.deleteFigure(from: from)
         cells.cells[from.y][from.x].figure = nil
     }
     
@@ -132,4 +135,5 @@ final class Board: BoardProtocol {
                 return nil
         }
     }
+   
 }
