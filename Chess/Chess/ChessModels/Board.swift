@@ -124,10 +124,10 @@ final class Board: BoardProtocol {
                 return Queen(color: .white, position: position)
             case (4, 7):
                 return King(color: .white, position: position)
-//            case (_, let y) where y == 1:
-//                return Pawn(color: .black, position: position)
-//            case (_, let y) where y == 6:
-//                return Pawn(color: .white, position: position)
+            case (_, let y) where y == 1:
+                return Pawn(color: .black, position: position)
+            case (_, let y) where y == 6:
+                return Pawn(color: .white, position: position)
             default:
                 return nil
         }

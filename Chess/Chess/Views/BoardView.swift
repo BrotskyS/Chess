@@ -123,9 +123,9 @@ extension BoardView: UICollectionViewDataSource {
             imageView.tag =  figure.position.hashValue
             figures.addSubview(imageView)
         } else {
-            let view = UIView()
-            view.tag =  cellData.position.hashValue
-            figures.addSubview(view)
+//            let view = UIView()
+//            view.tag =  cellData.position.hashValue
+//            figures.addSubview(view)
         }
         
         return cell
@@ -166,21 +166,16 @@ extension BoardView: BoardViewProtocol {
             return
         }
 
-      
         if let toFigure = to.figure {
             UIView.animate(withDuration: 0.1) {
-                self.figures.viewWithTag(toFigure.position.hashValue)?.isHidden = true
+                self.figures.viewWithTag(toFigure.position.hashValue)?.removeFromSuperview()
             }
         }
         
         UIView.animate(withDuration: 0.2) {
             self.figures.viewWithTag(from.position.hashValue)?.frame = toCell.frame
-          
-           
-        } completion: { _ in
-            self.figures.viewWithTag(from.position.hashValue)?.tag = to.position.hashValue
-//            self.figures.viewWithTag(to.position.hashValue)?.tag = from.position.hashValue
         }
+        self.figures.viewWithTag(from.position.hashValue)?.tag = to.position.hashValue
         
     }
 }
