@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 import SnapKit
+import Lottie
 
 class TimerView: UIView {
     let textTime =  UILabel()
-    let isRunningIcon = UIImageView(image: UIImage(systemName: "timer"))
-    var isRunning = false
+    
+    private var lottieTimerView = LottieAnimationView(name: "timer")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,16 +41,17 @@ class TimerView: UIView {
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
         }
+    
+        let colorProvider = ColorValueProvider(UIColor.white.lottieColorValue)
+        lottieTimerView.setValueProvider(colorProvider, keypath: AnimationKeypath(keypath: "**.**.Fill 1.Color"))
         
-        isRunningIcon.tintColor = .label
-        addSubview(isRunningIcon)
-        
-        isRunningIcon.snp.makeConstraints { make in
+        addSubview(lottieTimerView)
+        lottieTimerView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(snp.trailing).offset(-10)
             make.width.height.equalTo(20)
-            
         }
+        
     }
     
     func updateTimer(time: Int) {
@@ -61,6 +63,10 @@ class TimerView: UIView {
     }
     
     func updateIsRunningIcon(isRunning: Bool) {
-        self.isRunning = isRunning
+        if isRunning {
+            lottieTimerView.play()
+        } else {
+            lottieTimerView.stop()
+        }
     }
 }

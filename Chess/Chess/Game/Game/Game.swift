@@ -19,13 +19,11 @@ final class Game {
     
     init(gameView: GameViewControllerProtocol) {
         self.gameView = gameView
-//        toggleTimer(color: .white)
         
     }
     
     func toggleTimer(color: ColorType) {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            
             if self.currentMoveColorType == .white {
                 self.whiteRemainingTime -= 1
                 self.gameView?.updateWhiteTimer(time: self.whiteRemainingTime, color: .white)
@@ -33,8 +31,6 @@ final class Game {
                 self.blackRemainingTime -= 1
                 self.gameView?.updateBlackTimer(time: self.blackRemainingTime, color: .white)
             }
-         
-//            self.gameView?.updateTimer(time: self.whiteRemainingTime)
         })
       
     }
