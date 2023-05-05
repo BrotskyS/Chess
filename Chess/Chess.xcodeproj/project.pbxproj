@@ -35,6 +35,7 @@
 		0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */; };
 		0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */; };
 		0D7238B929FDB878007A7838 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7238B829FDB878007A7838 /* Cells.swift */; };
+		0D99F9BE2A0526F600E408DE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D99F9BD2A0526F600E408DE /* TimerView.swift */; };
 		0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAEF04329FAF62200EB4EB9 /* Move.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		0D4AAAED29F1B61E00C6F427 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		0D7238B829FDB878007A7838 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		0D99F9BD2A0526F600E408DE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0DAEF04329FAF62200EB4EB9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		0D39BECA2A0413DD006651AB /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				0D99F9BC2A0526E600E408DE /* Components */,
 				0D39BED12A041ED3006651AB /* Player */,
 				0D39BECC2A0413EE006651AB /* Board */,
 				0D39BECB2A0413E8006651AB /* Game */,
@@ -194,6 +197,14 @@
 				0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		0D99F9BC2A0526E600E408DE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0D99F9BD2A0526F600E408DE /* TimerView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				0D18766129F0849D009A2A1B /* CellView.swift in Sources */,
 				0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */,
 				0D18766329F08CB2009A2A1B /* Figure.swift in Sources */,
+				0D99F9BE2A0526F600E408DE /* TimerView.swift in Sources */,
 				0D18763929F05E28009A2A1B /* SceneDelegate.swift in Sources */,
 				0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */,
 				0D18766629F09633009A2A1B /* Pawn.swift in Sources */,
