@@ -41,16 +41,16 @@ class GameViewController: UIViewController {
     
     private func addTimer() {
 
-        view.addSubview(whiteTimer)
+        view.addSubview(blackTimer)
 
-        whiteTimer.snp.makeConstraints { make in
+        blackTimer.snp.makeConstraints { make in
             make.bottom.equalTo(board.snp.top).offset(-10)
             make.trailing.equalTo(board.snp.trailing).offset(-10)
         }
 
-        view.addSubview(blackTimer)
+        view.addSubview(whiteTimer)
 
-        blackTimer.snp.makeConstraints { make in
+        whiteTimer.snp.makeConstraints { make in
             make.top.equalTo(board.snp.bottom).offset(10)
             make.trailing.equalTo(board.snp.trailing).offset(-10)
         }

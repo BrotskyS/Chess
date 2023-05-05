@@ -19,10 +19,10 @@ final class Game {
     
     init(gameView: GameViewControllerProtocol) {
         self.gameView = gameView
-        
+        startTimer(color: .white)
     }
     
-    func toggleTimer(color: ColorType) {
+    func startTimer(color: ColorType) {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             if self.currentMoveColorType == .white {
                 self.whiteRemainingTime -= 1
@@ -32,13 +32,12 @@ final class Game {
                 self.gameView?.updateBlackTimer(time: self.blackRemainingTime, color: .white)
             }
         })
-      
+        
     }
 }
 
 extension Game: BoardDelegate {
     func makeMove(from: Position, to: Position, figure: any Figure) {
-        currentMoveColorType = figure.color == .white ? .white  : .black
-        toggleTimer(color: figure.color)
+        currentMoveColorType = figure.color == .white ? .black  : .white
     }
 }
