@@ -23,7 +23,11 @@ final class Game {
     }
     
     func startTimer(color: ColorType) {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
+            
             if self.currentMoveColorType == .white {
                 self.whiteRemainingTime -= 1
                 self.gameView?.updateWhiteTimer(time: self.whiteRemainingTime, color: .white)

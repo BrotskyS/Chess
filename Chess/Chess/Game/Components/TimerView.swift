@@ -55,8 +55,8 @@ class TimerView: UIView {
     }
     
     func updateTimer(time: Int) {
-        let minutes = time / 60
-        let seconds = time % 60
+        let minutes = String(format: "%02d", time / 60)
+        let seconds = String(format: "%02d", time % 60)
         
         let timeString = "\(minutes):\(seconds)"
         textTime.text = timeString
