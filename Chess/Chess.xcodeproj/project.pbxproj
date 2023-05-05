@@ -36,6 +36,7 @@
 		0D4AAAF029F1D3C500C6F427 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */; };
 		0D7238B929FDB878007A7838 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7238B829FDB878007A7838 /* Cells.swift */; };
 		0D99F9BE2A0526F600E408DE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D99F9BD2A0526F600E408DE /* TimerView.swift */; };
+		0D99F9C22A05888000E408DE /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D99F9C12A05888000E408DE /* ModuleBuilder.swift */; };
 		0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAEF04329FAF62200EB4EB9 /* Move.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		0D4AAAEF29F1D3C500C6F427 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		0D7238B829FDB878007A7838 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		0D99F9BD2A0526F600E408DE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0D99F9C12A05888000E408DE /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		0DAEF04329FAF62200EB4EB9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,15 +120,6 @@
 			path = Chess;
 			sourceTree = "<group>";
 		};
-		0D18764F29F0604A009A2A1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0D18765029F061D5009A2A1B /* BoardView.swift */,
-				0D18766029F0849D009A2A1B /* CellView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		0D18765629F077F0009A2A1B /* ChessModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +148,7 @@
 				0D39BED12A041ED3006651AB /* Player */,
 				0D39BECC2A0413EE006651AB /* Board */,
 				0D39BECB2A0413E8006651AB /* Game */,
+				0D99F9C12A05888000E408DE /* ModuleBuilder.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -171,13 +165,10 @@
 		0D39BECC2A0413EE006651AB /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				0D18764F29F0604A009A2A1B /* Views */,
-				0D18766429F09606009A2A1B /* Figures */,
+				0D99F9C02A05815400E408DE /* Models */,
 				0D18765729F0782F009A2A1B /* Board.swift */,
-				0D18766729F09925009A2A1B /* Position.swift */,
-				0DAEF04329FAF62200EB4EB9 /* Move.swift */,
-				0D7238B829FDB878007A7838 /* Cells.swift */,
-				0D18765929F078D9009A2A1B /* Cell.swift */,
+				0D18766029F0849D009A2A1B /* CellView.swift */,
+				0D18765029F061D5009A2A1B /* BoardView.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -205,6 +196,18 @@
 				0D99F9BD2A0526F600E408DE /* TimerView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0D99F9C02A05815400E408DE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D18766429F09606009A2A1B /* Figures */,
+				0D18765929F078D9009A2A1B /* Cell.swift */,
+				0D7238B829FDB878007A7838 /* Cells.swift */,
+				0DAEF04329FAF62200EB4EB9 /* Move.swift */,
+				0D18766729F09925009A2A1B /* Position.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +324,7 @@
 				0D18766129F0849D009A2A1B /* CellView.swift in Sources */,
 				0D4AAAEE29F1B61E00C6F427 /* UIColor + ext.swift in Sources */,
 				0D18766329F08CB2009A2A1B /* Figure.swift in Sources */,
+				0D99F9C22A05888000E408DE /* ModuleBuilder.swift in Sources */,
 				0D99F9BE2A0526F600E408DE /* TimerView.swift in Sources */,
 				0D18763929F05E28009A2A1B /* SceneDelegate.swift in Sources */,
 				0DAEF04429FAF62200EB4EB9 /* Move.swift in Sources */,

@@ -53,6 +53,7 @@ struct Cells {
     }
     
     mutating func highlightCells(selectedCell: Cell) {
+        
         for i in 0..<8 {
             for j in 0..<8 {
                 guard let figure = selectedCell.figure else {

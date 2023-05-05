@@ -14,13 +14,18 @@ protocol BoardProtocol: AnyObject {
     func pressOn(position: Position)
 }
 
+protocol BoardDelegate: AnyObject {
+    func makeMove(from: Position, to: Position, figure: any Figure)
+}
+
 final class Board: BoardProtocol {
     weak var boardView: BoardViewProtocol?
-    
+    weak var delegate: BoardDelegate?
     var cells = Cells()
 
-    init() {
+    init(boardView: BoardViewProtocol) {
         initCells()
+        self.boardView = boardView
     }
     
     func canSelectCell(cell: Cell) -> Bool {
@@ -39,6 +44,7 @@ final class Board: BoardProtocol {
     func pressOn(position: Position) {
         
         var cell = cells.getCell(position) // get cell
+        cells.cells[4][4].available = true
      
         // if selectedCell exist, figure on selectedCell exist and can this figure move
         if let selectedCell = cells.getSelectedCell(),
@@ -47,6 +53,7 @@ final class Board: BoardProtocol {
             moveFigure(from: selectedCell, to: cell)
             cells.deselectAllCells()
             boardView?.reloadCells()
+            
             return
         }
         
@@ -55,9 +62,11 @@ final class Board: BoardProtocol {
             cells.highlightCells(selectedCell: cell)
             cell.selected = true
             cells.cells[position.y][position.x] = cell
+            
         } else { // press on cell without figure
             cells.deselectAllCells()
         }
+        
         boardView?.reloadCells()
   
     }
@@ -69,6 +78,7 @@ final class Board: BoardProtocol {
        
         figure.moveFigure(toCell: to, board: self)
         cells.makeMove(from: from.position, to: to.position, figure: figure)
+        delegate?.makeMove(from: from.position, to: to.position, figure: figure)
     
         cells.cells[from.position.y][from.position.x].figure = nil
         boardView?.deleteFigure(from: to.position)

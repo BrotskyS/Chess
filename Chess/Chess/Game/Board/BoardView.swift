@@ -39,10 +39,10 @@ class BoardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let board = Board()
-        board.boardView = self
+//        let board = Board()
+//        board.boardView = self
         
-        self.board = board
+//        self.board = board
         
         addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -127,6 +127,7 @@ extension BoardView: BoardViewProtocol {
     }
     
     func moveFigure(from: Cell, to: Cell) {
+        
         let toCellIndexPath = board.cells.getIndexPathInt(to.position)
         guard let toCell = collectionView.cellForItem(at: IndexPath(item: toCellIndexPath, section: 0)) else {
             

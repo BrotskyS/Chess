@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     private func addGame() {
-        let game = GameViewController()
+        let game = ModuleBuilder.game()
         
         navigationController?.pushViewController(game, animated: true)
     }

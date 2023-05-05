@@ -12,6 +12,7 @@ import SnapKit
 class TimerView: UIView {
     let textTime =  UILabel()
     let isRunningIcon = UIImageView(image: UIImage(systemName: "timer"))
+    var isRunning = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +32,7 @@ class TimerView: UIView {
             make.height.equalTo(30)
         }
         
-        textTime.text = "09:55"
+        textTime.text = "10:00"
         textTime.font = .boldSystemFont(ofSize: 20)
         addSubview(textTime)
         
@@ -49,5 +50,17 @@ class TimerView: UIView {
             make.width.height.equalTo(20)
             
         }
+    }
+    
+    func updateTimer(time: Int) {
+        let minutes = time / 60
+        let seconds = time % 60
+        
+        let timeString = "\(minutes):\(seconds)"
+        textTime.text = timeString
+    }
+    
+    func updateIsRunningIcon(isRunning: Bool) {
+        self.isRunning = isRunning
     }
 }
